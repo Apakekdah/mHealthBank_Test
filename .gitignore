@@ -332,3 +332,11 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+
+# woules
+!libs
+libs/*
+!libs/_base/
+
+TestResult/*
