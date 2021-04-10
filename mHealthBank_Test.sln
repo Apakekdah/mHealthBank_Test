@@ -1,0 +1,144 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank_Test", "mHealthBank_Test\mHealthBank_Test.csproj", "{99A6A2CB-00E5-44C0-803C-C8DDE0961230}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89D3044B-7079-467D-B998-5E67A3B5DFA9}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{0AB51471-6181-4D3A-88F2-12DEC77AE465}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Registration", "Commons\mHealthBank.Registration\mHealthBank.Registration.csproj", "{A622141B-598C-45D2-B0F5-7B07571C2752}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.LogRegistration", "Commons\mHealthBank.LogRegistration\mHealthBank.LogRegistration.csproj", "{7F2939CF-06A2-449B-B98F-67CEBF129744}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.ServiceActivator", "Commons\mHealthBank.ServiceActivator\mHealthBank.ServiceActivator.csproj", "{C19B6C03-E167-4AAA-84D8-02EF8EB93D64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{657AF9EC-B11D-458A-AC8B-BEF3EFE41CC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.MongoEF", "Data\mHealthBank.MongoEF\mHealthBank.MongoEF.csproj", "{5F0AB770-FEC9-4840-8A0A-9D9E4845F476}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{C9AE31B3-F455-49F2-868B-24CAB1605A91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Entities", "Models\mHealthBank.Entities\mHealthBank.Entities.csproj", "{E5CAA5C2-7C25-44F8-A99E-383384C281AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Attributes", "Commons\mHealthBank.Attributes\mHealthBank.Attributes.csproj", "{7AB9E7C9-B79B-4BC2-9AB9-FEA51FEACCD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Helpers", "Commons\mHealthBank.Helpers\mHealthBank.Helpers.csproj", "{8BDE91AB-F33D-4474-BE24-F3E6D6C628D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{6733BD05-5B98-419D-8BCD-1F5BA382AE79}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "mHealthBank.Shared", "Commons\mHealthBank.Shared\mHealthBank.Shared.shproj", "{A269884E-606A-4E55-A3AA-F65523231D71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Business", "Data\mHealthBank.mHealthBank\mHealthBank.Business.csproj", "{A1C5501E-59EF-45FF-A05D-85926DA5D2E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controllers", "Controllers", "{69434420-BC1C-4E52-96DD-BABBA7C9A6A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.ApiController", "Controllers\mHealthBank.ApiController\mHealthBank.ApiController.csproj", "{EA24DF33-2B78-43B3-9F8C-42BE2B352D1F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Models", "Models\mHealthBank.Models\mHealthBank.Models.csproj", "{6EDCEED7-C69F-4FDD-80DF-846141F4FE47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Mapper", "Commons\mHealthBank.Mapper\mHealthBank.Mapper.csproj", "{45852211-11C7-4343-A518-500593308AD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaces", "Interfaces", "{67E25630-4622-4C16-A879-40CB6C59C200}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Interfaces", "Interfaces\mHealthBank.Interfaces\mHealthBank.Interfaces.csproj", "{76022308-FAED-4423-BAEC-71505E68DE59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Test", "_Test", "{4A1D3255-00DF-455D-AE59-0DF9DC28C054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mHealthBank.UnitTest", "Test\mHealthBank.UnitTest\mHealthBank.UnitTest.csproj", "{93AB561F-48A1-48F3-B1F6-D09E26C875F2}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Commons\mHealthBank.Shared\mHealthBank.Shared.projitems*{a269884e-606a-4e55-a3aa-f65523231d71}*SharedItemsImports = 13
+		Commons\mHealthBank.Shared\mHealthBank.Shared.projitems*{e5caa5c2-7c25-44f8-a99e-383384c281ad}*SharedItemsImports = 5
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99A6A2CB-00E5-44C0-803C-C8DDE0961230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A6A2CB-00E5-44C0-803C-C8DDE0961230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A6A2CB-00E5-44C0-803C-C8DDE0961230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A6A2CB-00E5-44C0-803C-C8DDE0961230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A622141B-598C-45D2-B0F5-7B07571C2752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A622141B-598C-45D2-B0F5-7B07571C2752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A622141B-598C-45D2-B0F5-7B07571C2752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A622141B-598C-45D2-B0F5-7B07571C2752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F2939CF-06A2-449B-B98F-67CEBF129744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2939CF-06A2-449B-B98F-67CEBF129744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2939CF-06A2-449B-B98F-67CEBF129744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2939CF-06A2-449B-B98F-67CEBF129744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C19B6C03-E167-4AAA-84D8-02EF8EB93D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19B6C03-E167-4AAA-84D8-02EF8EB93D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19B6C03-E167-4AAA-84D8-02EF8EB93D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19B6C03-E167-4AAA-84D8-02EF8EB93D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F0AB770-FEC9-4840-8A0A-9D9E4845F476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F0AB770-FEC9-4840-8A0A-9D9E4845F476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F0AB770-FEC9-4840-8A0A-9D9E4845F476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F0AB770-FEC9-4840-8A0A-9D9E4845F476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5CAA5C2-7C25-44F8-A99E-383384C281AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5CAA5C2-7C25-44F8-A99E-383384C281AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5CAA5C2-7C25-44F8-A99E-383384C281AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5CAA5C2-7C25-44F8-A99E-383384C281AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AB9E7C9-B79B-4BC2-9AB9-FEA51FEACCD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AB9E7C9-B79B-4BC2-9AB9-FEA51FEACCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AB9E7C9-B79B-4BC2-9AB9-FEA51FEACCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AB9E7C9-B79B-4BC2-9AB9-FEA51FEACCD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BDE91AB-F33D-4474-BE24-F3E6D6C628D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BDE91AB-F33D-4474-BE24-F3E6D6C628D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BDE91AB-F33D-4474-BE24-F3E6D6C628D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BDE91AB-F33D-4474-BE24-F3E6D6C628D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C5501E-59EF-45FF-A05D-85926DA5D2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C5501E-59EF-45FF-A05D-85926DA5D2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C5501E-59EF-45FF-A05D-85926DA5D2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C5501E-59EF-45FF-A05D-85926DA5D2E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA24DF33-2B78-43B3-9F8C-42BE2B352D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA24DF33-2B78-43B3-9F8C-42BE2B352D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA24DF33-2B78-43B3-9F8C-42BE2B352D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA24DF33-2B78-43B3-9F8C-42BE2B352D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EDCEED7-C69F-4FDD-80DF-846141F4FE47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EDCEED7-C69F-4FDD-80DF-846141F4FE47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EDCEED7-C69F-4FDD-80DF-846141F4FE47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EDCEED7-C69F-4FDD-80DF-846141F4FE47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45852211-11C7-4343-A518-500593308AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45852211-11C7-4343-A518-500593308AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45852211-11C7-4343-A518-500593308AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45852211-11C7-4343-A518-500593308AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76022308-FAED-4423-BAEC-71505E68DE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76022308-FAED-4423-BAEC-71505E68DE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76022308-FAED-4423-BAEC-71505E68DE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76022308-FAED-4423-BAEC-71505E68DE59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93AB561F-48A1-48F3-B1F6-D09E26C875F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93AB561F-48A1-48F3-B1F6-D09E26C875F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93AB561F-48A1-48F3-B1F6-D09E26C875F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93AB561F-48A1-48F3-B1F6-D09E26C875F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A622141B-598C-45D2-B0F5-7B07571C2752} = {0AB51471-6181-4D3A-88F2-12DEC77AE465}
+		{7F2939CF-06A2-449B-B98F-67CEBF129744} = {0AB51471-6181-4D3A-88F2-12DEC77AE465}
+		{C19B6C03-E167-4AAA-84D8-02EF8EB93D64} = {0AB51471-6181-4D3A-88F2-12DEC77AE465}
+		{5F0AB770-FEC9-4840-8A0A-9D9E4845F476} = {657AF9EC-B11D-458A-AC8B-BEF3EFE41CC0}
+		{E5CAA5C2-7C25-44F8-A99E-383384C281AD} = {C9AE31B3-F455-49F2-868B-24CAB1605A91}
+		{7AB9E7C9-B79B-4BC2-9AB9-FEA51FEACCD7} = {0AB51471-6181-4D3A-88F2-12DEC77AE465}
+		{8BDE91AB-F33D-4474-BE24-F3E6D6C628D4} = {0AB51471-6181-4D3A-88F2-12DEC77AE465}
+		{A269884E-606A-4E55-A3AA-F65523231D71} = {6733BD05-5B98-419D-8BCD-1F5BA382AE79}
+		{A1C5501E-59EF-45FF-A05D-85926DA5D2E1} = {657AF9EC-B11D-458A-AC8B-BEF3EFE41CC0}
+		{EA24DF33-2B78-43B3-9F8C-42BE2B352D1F} = {69434420-BC1C-4E52-96DD-BABBA7C9A6A1}
+		{6EDCEED7-C69F-4FDD-80DF-846141F4FE47} = {C9AE31B3-F455-49F2-868B-24CAB1605A91}
+		{45852211-11C7-4343-A518-500593308AD0} = {0AB51471-6181-4D3A-88F2-12DEC77AE465}
+		{76022308-FAED-4423-BAEC-71505E68DE59} = {67E25630-4622-4C16-A879-40CB6C59C200}
+		{93AB561F-48A1-48F3-B1F6-D09E26C875F2} = {4A1D3255-00DF-455D-AE59-0DF9DC28C054}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {998A2C20-188F-48B6-92A3-B6408FE15A01}
+	EndGlobalSection
+EndGlobal

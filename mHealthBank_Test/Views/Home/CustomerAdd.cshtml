@@ -1,0 +1,59 @@
+﻿@using mHealthBank.Models.Forms
+@model CustomerModel
+<div>
+    <div class="modal-header">
+        <h4 id="model-title" class="modal-title">Customer</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" id="mode" />
+        <form id="create-form" action="/api/Customer" method="post" onsubmit="return jqModalPost(this);">
+            <input type="hidden" name="Id" />
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">Name Pelanggan</label>
+                <div class="col-md-9">
+                    <input type="text" autocomplete="off" asp-for="CustomerName" name="CustomerName" class="form-control">
+                    <span asp-validation-for="CustomerName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">Tanggal Lahir</label>
+                <div class="col-md-9">
+                    <div class='input-group date' id='dtpTglLahir'>
+                        <input id="tglLahir" type="text" autocomplete="off" asp-for="DateOfBirth" name="DateOfBirth" class="form-control">
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">Foto KTP</label>
+                <div class="col-md-9">
+                    <div class='input-group' id='dtpTglLahir'>
+                        <input type="file" autocomplete="off" asp-for="File" name="File" class="form-control">
+                        <span asp-validation-for="File" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="form-group justify-content-between">
+            <button type="button" class="btn btn-secondary close-button" data-dismiss="modal">Cancel</button>
+            <button id="submit" type="submit" class="btn btn-primary save-button">Save</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#tglLahir').datetimepicker({
+            format: 'yyyy-MM-DD',
+            maxDate: new Date()
+        });
+
+        $('#submit').on('click', function () {
+            if (confirm('Simpan data ini ?')) {
+                $('#create-form').submit();
+            }
+        });
+    });
+</script>

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Interfaces\mHealthBank.Interfaces\mHealthBank.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Models\mHealthBank.Entities\mHealthBank.Entities.csproj" />
+    <ProjectReference Include="..\..\Models\mHealthBank.Models\mHealthBank.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SAGE.Core">
+      <HintPath>..\..\libs\_base\SAGE.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SAGE.IoC">
+      <HintPath>..\..\libs\_base\SAGE.IoC.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

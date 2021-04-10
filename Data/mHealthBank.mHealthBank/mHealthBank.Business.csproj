@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.14" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commons\mHealthBank.Helpers\mHealthBank.Helpers.csproj" />
+    <ProjectReference Include="..\..\Models\mHealthBank.Entities\mHealthBank.Entities.csproj" />
+    <ProjectReference Include="..\..\Models\mHealthBank.Models\mHealthBank.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SAGE.Business">
+      <HintPath>..\..\libs\_base\SAGE.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="SAGE.Core">
+      <HintPath>..\..\libs\_base\SAGE.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SAGE.IoC">
+      <HintPath>..\..\libs\_base\SAGE.IoC.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

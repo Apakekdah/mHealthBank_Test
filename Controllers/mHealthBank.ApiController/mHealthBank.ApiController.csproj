@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\mHealthBank.mHealthBank\mHealthBank.Business.csproj" />
+    <ProjectReference Include="..\..\Interfaces\mHealthBank.Interfaces\mHealthBank.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SAGE.Business">
+      <HintPath>..\..\libs\_base\SAGE.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="SAGE.Core">
+      <HintPath>..\..\libs\_base\SAGE.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SAGE.IoC">
+      <HintPath>..\..\libs\_base\SAGE.IoC.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

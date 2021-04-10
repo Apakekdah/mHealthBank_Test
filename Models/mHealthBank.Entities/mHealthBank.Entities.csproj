@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commons\mHealthBank.Attributes\mHealthBank.Attributes.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\..\Commons\mHealthBank.Shared\mHealthBank.Shared.projitems" Label="Shared" />
+
+</Project>

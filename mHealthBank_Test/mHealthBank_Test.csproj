@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>mHealthBank</AssemblyName>
+    <RootNamespace>mHealthBank</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Temp\empty.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Temp\empty.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\bootstrap-datetimepicker\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\bootstrap-datetimepicker\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.1.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Topshelf" Version="4.3.0" />
+    <PackageReference Include="TopShelf.StartParameters" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Commons\mHealthBank.LogRegistration\mHealthBank.LogRegistration.csproj" />
+    <ProjectReference Include="..\Commons\mHealthBank.Registration\mHealthBank.Registration.csproj" />
+    <ProjectReference Include="..\Controllers\mHealthBank.ApiController\mHealthBank.ApiController.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SAGE.Core">
+      <HintPath>..\libs\_base\SAGE.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SAGE.IoC">
+      <HintPath>..\libs\_base\SAGE.IoC.dll</HintPath>
+    </Reference>
+    <Reference Include="SAGE.IoC.Autofac">
+      <HintPath>..\libs\_base\SAGE.IoC.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="SAGE.IoC.Autofac.DependencyInjection">
+      <HintPath>..\libs\_base\SAGE.IoC.Autofac.DependencyInjection.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

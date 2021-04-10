@@ -1,0 +1,47 @@
+Selamat sore,
+
+ 
+
+Saya kirimkan materi test sebagai *Backend Engineer* :
+
+ 
+
+1. membuat API untuk upload dan view image
+
+2. didalam code yang dibuat, minimal harus ada logging atau Unit Test
+
+ 
+
+hasil jawaban dibuat kedalam 1 folder dan di zip..lalu dikirimkan ke :
+
+ 
+
+email : asep.hb@mhealthbank.com
+
+ 
+
+ 
+
+Dan untuk form data pelamar harap dikirimkan ke :
+
+ 
+
+email : dianita.ang@mhealthbank.com
+
+ 
+
+hasil test & form data pelamar harap dikirimkan selambat-lambatnya tgl 12 April 2021 .
+
+ 
+
+Terima kasih.
+
+ 
+
+Dianita Anggraini 
+
+HR Assistant 
+
+PT mHealthBank Rising Care 
+
+Email : dianita.ang@mhealthbankcom
