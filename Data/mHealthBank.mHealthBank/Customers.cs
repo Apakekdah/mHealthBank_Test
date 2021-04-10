@@ -8,6 +8,7 @@ using SAGE.Core.Interface;
 using SAGE.IoC;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace mHealthBank.Business
@@ -17,12 +18,16 @@ namespace mHealthBank.Business
         private readonly IDisposableIoC life;
         private readonly CustomerConfiguration customerConfig;
 
+        public ILogger Log { get; }
+
         public Customers(IRepositoryAsync<Customer> repository, IUnitOfWorkAsync unitofwork, IDisposableIoC life)
             : base(repository, unitofwork)
         {
             this.life = life;
 
             customerConfig = life.GetInstance<IOptions<CustomerConfiguration>>().Value;
+
+            Log = life.GetInstance<ILogger>(new KeyValueParameter("type", this.GetType()));
         }
 
         public override Task Add(Customer entity)
@@ -150,6 +155,9 @@ namespace mHealthBank.Business
         private string GetName(string sourceName)
         {
             var ext = Path.GetExtension(sourceName);
+
+            if (customerConfig.AllowedExtension.Any(c => c.Equals(ext)))
+                throw new NotSupportedException($"Extension with '{ext}' not supported");
 
             string path;
             while (!File.Exists((path = Path.Combine(customerConfig.BasePath, RandomName(ext)))))
