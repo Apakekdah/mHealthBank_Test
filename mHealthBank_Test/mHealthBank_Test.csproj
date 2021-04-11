@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>mHealthBank</AssemblyName>
     <RootNamespace>mHealthBank</RootNamespace>
+    <UserSecretsId>261faa72-760c-4c90-85c9-4b44377f6002</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
