@@ -3,8 +3,8 @@
 
 # ServerDB Azure
 ```xml
- port: 27017
  host: 52.148.114.31
+ port: 27017
 ```
 
 # Test Page Simple Html
