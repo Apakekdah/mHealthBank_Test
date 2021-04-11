@@ -32,10 +32,16 @@ namespace mHealthBank.Business
 
         public override Task Add(Customer entity)
         {
+            Log.Info($"Adding Customer '{entity.CustomerName}'");
+
             if (!entity.KtpImage.IsNullOrEmpty())
             {
                 var freeName = GetName(entity.KtpImage);
+
+                Log.Info($"Writing file for '{entity.CustomerName}' with temporary name '{freeName}' Into '{customerConfig.BasePath}'");
+
                 entity.KtpImage = Path.GetFileName(freeName);
+
                 FileInfo fi = new FileInfo(freeName);
                 using (var fs = fi.Create())
                 {
@@ -56,6 +62,8 @@ namespace mHealthBank.Business
 
         public override async Task Update(Customer entity)
         {
+            Log.Info($"Updating Customer '{entity.CustomerName}'");
+
             if (!entity.KtpImage.IsNullOrEmpty())
             {
                 var custPrev = await GetById(entity.Id).ConfigureAwait(false);
@@ -76,6 +84,9 @@ namespace mHealthBank.Business
                         freeName = GetName(entity.KtpImage);
                         entity.KtpImage = Path.GetFileName(freeName);
                     }
+
+                    Log.Info($"Replace file for '{entity.CustomerName}' with temporary name '{freeName}' Into '{customerConfig.BasePath}'");
+
                     FileInfo fi = new FileInfo(freeName);
                     using (var fs = fi.Create())
                     {
@@ -98,11 +109,16 @@ namespace mHealthBank.Business
 
         public async Task<ImageInfo> GetImage(string id)
         {
+            Log.Info($"Getting Image for CustomerID '{id}'");
+
             if (id.IsNullOrEmpty())
                 throw new ArgumentException("id");
             var customer = await GetById(id);
             if (customer == null)
                 throw new Exception("Customer not found");
+
+            Log.Info($"Read file for '{customer.CustomerName}' with temporary name '{customer.KtpImage}' From '{customerConfig.BasePath}'");
+
             FileInfo fi = new FileInfo(Path.Combine(customerConfig.BasePath, customer.KtpImage));
             if (!fi.Exists)
                 throw new FileNotFoundException();
@@ -113,25 +129,35 @@ namespace mHealthBank.Business
             }
             ms.Seek(0, SeekOrigin.Begin);
 
+            var contentType = customer.KtpImage.GetContentType();
+
+            Log.Info($"File Readed for '{customer.CustomerName}' with temporary name '{customer.KtpImage}' with content-type '{contentType}'");
+
             return new ImageInfo()
             {
-                ContentType = customer.KtpImage.GetContentType(),
+                ContentType = contentType,
                 Stream = ms
             };
         }
 
         public override async Task Delete(string id)
         {
+            Log.Info($"Deleting CustomerID '{id}'");
+
             var customer = await GetById(id).ConfigureAwait(false);
             if (customer == null)
                 throw new Exception("Customer not found");
 
             if (!customer.KtpImage.IsNullOrEmpty())
+            {
+                Log.Info($"Delete file for '{customer.CustomerName}' with temporary name '{customer.KtpImage}' From '{customerConfig.BasePath}'");
+
                 try
                 {
                     CleanUpFailedThrow(customer.KtpImage);
                 }
                 catch { }
+            }
             await base.Delete(id);
         }
 
@@ -139,6 +165,8 @@ namespace mHealthBank.Business
         {
             return Task.Run(() =>
             {
+                Log.Info($"CleanUp Failed Customer Image with file '{tempFile}'");
+
                 try
                 {
                     CleanUpFailedThrow(tempFile);
@@ -156,7 +184,7 @@ namespace mHealthBank.Business
         {
             var ext = Path.GetExtension(sourceName);
 
-            if (customerConfig.AllowedExtension.Any(c => c.Equals(ext)))
+            if (!customerConfig.AllowedExtension.Any(c => c.Equals(ext)))
                 throw new NotSupportedException($"Extension with '{ext}' not supported");
 
             string path;

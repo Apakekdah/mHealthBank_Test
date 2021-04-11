@@ -50,7 +50,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.Interfaces", "I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Test", "_Test", "{4A1D3255-00DF-455D-AE59-0DF9DC28C054}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mHealthBank.UnitTest", "Test\mHealthBank.UnitTest\mHealthBank.UnitTest.csproj", "{93AB561F-48A1-48F3-B1F6-D09E26C875F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mHealthBank.UnitTest", "Test\mHealthBank.UnitTest\mHealthBank.UnitTest.csproj", "{93AB561F-48A1-48F3-B1F6-D09E26C875F2}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

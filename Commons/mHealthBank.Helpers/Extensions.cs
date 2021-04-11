@@ -66,7 +66,7 @@ namespace mHealthBank
                 dicContentType.Add("image/bmp", new HashSet<string>(new[] { ".bmp" }));
             }
 
-            var ext = Path.GetExtension("name").ToLower();
+            var ext = Path.GetExtension(name).ToLower();
 
             return dicContentType.FirstOrDefault(kvp => kvp.Value.Contains(ext)).Key ?? DEFAULT_MIME;
         }

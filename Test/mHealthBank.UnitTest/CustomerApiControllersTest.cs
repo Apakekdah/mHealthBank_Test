@@ -3,6 +3,8 @@ using mHealthBank.Business;
 using mHealthBank.Entities;
 using mHealthBank.Interfaces;
 using mHealthBank.Models.Configuration;
+using mHealthBank.Models.Forms;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -23,9 +25,13 @@ namespace mHealthBank.UnitTest
     {
         Mock<IDisposableIoC> repoIoC;
         Mock<Customers> repoBllCustomer;
+        Mock<IUnitOfWorkAsync> mockUoW;
         DateTime now;
+        Customers bllCustomer;
 
         CustomerController controller;
+
+        Mock<IOptions<CustomerConfiguration>> mockCustCfg;
 
         public CustomerApiControllersTest()
         {
@@ -37,34 +43,45 @@ namespace mHealthBank.UnitTest
         {
             repoIoC = new Mock<IDisposableIoC>();
 
-            var mockMapper = new Mock<IMappingObject>();
-
-            var mockCustRepoAsync = new Mock<IRepositoryAsync<Customer>>();
-            var mockUoW = new Mock<IUnitOfWorkAsync>();
-
-            var mockLogger = new Mock<ILogger>();
-            var mockCustCfg = new Mock<IOptions<CustomerConfiguration>>();
+            mockCustCfg = new Mock<IOptions<CustomerConfiguration>>();
             mockCustCfg.Setup(c => c.Value)
                 .Returns(GetSettings<CustomerConfiguration>("CustomerConfiguration"));
+            repoIoC.Setup(repo => repo.GetInstance<IOptions<CustomerConfiguration>>())
+                .Returns(mockCustCfg.Object);
+
+            var mockLogger = new Mock<ILogger>();
+            repoIoC.Setup(repo => repo.GetInstance<ILogger>(It.IsAny<KeyValueParameter>()))
+                .Returns(mockLogger.Object);
+
+            var mockMapper = new Mock<IMappingObject>();
+            repoIoC.Setup(repo => repo.GetInstance<IMappingObject>())
+                .Returns(mockMapper.Object);
+
+            var mockCustRepoAsync = new Mock<IRepositoryAsync<Customer>>();
+            mockUoW = new Mock<IUnitOfWorkAsync>();
 
             repoIoC.SetupGet(c => c.New)
                 .Returns(repoIoC.Object);
 
+            bllCustomer = new Customers(mockCustRepoAsync.Object, mockUoW.Object, repoIoC.Object);
+
             repoBllCustomer = new Mock<Customers>(mockCustRepoAsync.Object, mockUoW.Object, repoIoC.Object);
             repoBllCustomer.Setup(bll => bll.GetAll())
                 .ReturnsAsync(GetCustomers());
-
-            repoIoC.Setup(repo => repo.GetInstance<ILogger>(It.IsAny<KeyValueParameter>()))
-                .Returns(mockLogger.Object);
-
-            repoIoC.Setup(repo => repo.GetInstance<IOptions<CustomerConfiguration>>())
-                .Returns(mockCustCfg.Object);
+            repoBllCustomer.Setup(bll => bll.GetById(It.Is("1", StringComparer.OrdinalIgnoreCase)))
+                .ReturnsAsync(GetCustomers().First(c => c.Id == "1"));
+            //repoBllCustomer.Setup(bll => bll.Add(It.IsAny<Customer>()));
 
             repoIoC.Setup(repo => repo.GetInstance<Customers>())
-                .Returns(repoBllCustomer.Object);
+                .Returns(bllCustomer);
 
-            repoIoC.Setup(repo => repo.GetInstance<IMappingObject>())
-                .Returns(mockMapper.Object);
+            mockCustRepoAsync.Setup(bll => bll.GetById(It.Is("1", StringComparer.OrdinalIgnoreCase)))
+                .ReturnsAsync(GetCustomers().First(c => c.Id == "1"));
+
+            //mockCustRepoAsync.Setup(bll => bll.Add(It.IsAny<Customer>()));
+
+            mockMapper.Setup(repo => repo.Get<Customer>(It.IsAny<CustomerModel>()))
+                .Returns(GetCustomers().First());
 
             controller = new CustomerController(repoIoC.Object);
         }
@@ -90,13 +107,16 @@ namespace mHealthBank.UnitTest
 
         public IEnumerable<Customer> GetCustomers()
         {
+            FileInfo fi = new FileInfo(Path.Combine(mockCustCfg.Object.Value.BasePath, "capturenux2012071901010.jpg"));
+
             return new Customer[]
             {
                 new Customer
                 {
                     Id = "1",
                     CustomerName = "Name 1",
-                    KtpImage = "Ktp.jpg",
+                    KtpImage = "capturenux2012071901010.jpg",
+                    KtpImageStream = fi.OpenRead(),
                     CreateBy = "test",
                     CreateDt = now,
                     UpdateBy = "test",
@@ -122,9 +142,61 @@ namespace mHealthBank.UnitTest
 
             Assert.IsInstanceOfType(jsonResult, typeof(JsonObject));
 
+            Assert.IsInstanceOfType(jsonResult.Result, typeof(IEnumerable<Customer>));
+
             Assert.IsTrue((jsonResult.Result as IEnumerable<Customer>).Count() == 2);
 
             Assert.IsTrue(jsonResult.Success);
+        }
+
+        [TestMethod]
+        public async Task GetTest()
+        {
+            var jsonResult = await controller.Get("1");
+
+            Assert.IsInstanceOfType(jsonResult, typeof(JsonObject));
+
+            Assert.IsInstanceOfType(jsonResult.Result, typeof(Customer));
+
+            Assert.IsTrue((jsonResult.Result as Customer).CustomerName == "Name 1");
+        }
+
+        [TestMethod]
+        public async Task GetImageTest()
+        {
+            var fileContent = await controller.GetImage("1");
+
+            Assert.IsInstanceOfType(fileContent, typeof(FileStreamResult));
+        }
+
+        [TestMethod]
+        public async Task AddTest()
+        {
+            mockUoW.Setup(bll => bll.Commit())
+                .ReturnsAsync(1);
+
+            IFormFile file = new MockFormFile(Path.Combine(mockCustCfg.Object.Value.BasePath, "capturenux2012071901010.jpg"));
+
+            var jsonResult = await controller.Post(new Models.Forms.CustomerModel()
+            {
+                CustomerName = "Rudi",
+                DateOfBirth = new DateTime(2000, 1, 1),
+                File = file
+            });
+
+            Assert.IsInstanceOfType(jsonResult, typeof(JsonObject));
+
+            Assert.IsTrue(jsonResult.Success);
+
+            Assert.IsInstanceOfType(jsonResult.Result, typeof(int));
+
+            Assert.IsTrue(((int)jsonResult.Result) == 1);
+        }
+
+        [TestMethod]
+        public async Task AddToBusinessTest()
+        {
+            await bllCustomer.Add(GetCustomers().First());
         }
     }
 }
