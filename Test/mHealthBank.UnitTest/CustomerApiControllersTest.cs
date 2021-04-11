@@ -70,15 +70,12 @@ namespace mHealthBank.UnitTest
                 .ReturnsAsync(GetCustomers());
             repoBllCustomer.Setup(bll => bll.GetById(It.Is("1", StringComparer.OrdinalIgnoreCase)))
                 .ReturnsAsync(GetCustomers().First(c => c.Id == "1"));
-            //repoBllCustomer.Setup(bll => bll.Add(It.IsAny<Customer>()));
 
             repoIoC.Setup(repo => repo.GetInstance<Customers>())
                 .Returns(bllCustomer);
 
             mockCustRepoAsync.Setup(bll => bll.GetById(It.Is("1", StringComparer.OrdinalIgnoreCase)))
                 .ReturnsAsync(GetCustomers().First(c => c.Id == "1"));
-
-            //mockCustRepoAsync.Setup(bll => bll.Add(It.IsAny<Customer>()));
 
             mockMapper.Setup(repo => repo.Get<Customer>(It.IsAny<CustomerModel>()))
                 .Returns(GetCustomers().First());
